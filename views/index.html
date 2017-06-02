@@ -11,14 +11,29 @@
     <!-- VENDOR SCRIPTS -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.2/mustache.min.js"></script>
+
     <!-- APPLICATION SCRIPTS -->
     <script src="/scripts/app.js"></script>
   </head>
-  <body>
 
+
+  <body>
+    <div class="jumbotron"></div> <!--close class="jumbotron"-->
     <div class="container">
 
+      <div class="row-spacer" id="trails"></div> <!-- target to which index of trails will be appended-->
+
     </div>
+
+
+    <!-- Trail Cards Template -->
+    <script id="trails-template" type="x-tmpl-mustache">
+      <div class="col-md-4 card row-spacer">
+        <img src="{{image}}" alt="{{name}}" class="img-responsive" data-toggle="modal" data-target="{{_id}}">
+        <h4>{{name}}</h4>
+      </div>
+    </script>
 
   </body>
 </html>

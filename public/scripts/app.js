@@ -10,7 +10,11 @@ $(document).ready(function(){
   });
 
   function indexAllTrails(jsonData) {
-    console.log(jsonData);
+    var rawTemplate = $("#trails-template").html();
+    jsonData.forEach(function(el) {
+      var stampedTemplate = Mustache.render(rawTemplate, el);
+      $("#trails").append(stampedTemplate);
+    });
   }
 
   function allTrailsError() {

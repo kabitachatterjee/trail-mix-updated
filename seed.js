@@ -23,7 +23,7 @@ var trailList = [
                   distance: 1.7,
                   difficulty: 2,
                   link: "http://www.presidio.gov/trails/park-trail",
-                  image: "https://s3-media3.fl.yelpcdn.com/bphoto/lf3YEBeWVf_I6qIiCQK1pA/ls.jpg",
+                  image: "http://68.media.tumblr.com/f94c2754c39029eea35a319c6575ea40/tumblr_inline_nwnl3bWlXO1qfmiuj_500.jpg",
                   trailMap: "http://www.mappery.com/maps/Presidio-Trail-and-Overlook-Map.png",
                 },
                 {
