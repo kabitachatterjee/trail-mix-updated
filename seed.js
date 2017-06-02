@@ -32,7 +32,7 @@ var trailList = [
                   difficulty: 2.5,
                   link: "https://www.alltrails.com/trail/us/california/mount-sutro-loop",
                   image: "https://blogdotemilypolardotcom.files.wordpress.com/2012/05/sutro_120512-14711.jpg",
-                  trailMap: "http://www.peasepress.com/sutromap.pdf",
+                  trailMap: "http://2.bp.blogspot.com/-eGZbA2s0O8o/U50KjB_a0KI/AAAAAAAAKdA/jMYzGUkuxTc/s1600/mt-sutro1.png",
                 }
 ];
 
