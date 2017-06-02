@@ -21,9 +21,7 @@
   <body>
     <div class="jumbotron"></div> <!--close class="jumbotron"-->
     <div class="container">
-
       <div class="row-spacer" id="trails"></div> <!-- target to which index of trails will be appended-->
-
     </div>
 
 
@@ -33,7 +31,29 @@
         <img src="{{image}}" alt="{{name}}" class="img-responsive" data-toggle="modal" data-target="{{_id}}">
         <h4>{{name}}</h4>
       </div>
-    </script>
+    </script> <!-- end of Trail Cards Template -->
+
+    <!-- Info Modal Template -->
+    <script id="info-modal-template" type="x-tmpl-mustache">
+      <div class="modal" id="{{_id}}" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">{{name}}</h4>
+            </div>
+            <div class="modal-body">
+              <img class="img-responsive" src="{{trailMap}}" alt="300 movie poster">
+              <h5>More Information</h5><a href="{{link}}" target="_blank">{{link}}</a>
+              <h5>Difstance: {{distance}}</h5>
+              <h5>Difficulty: {{difficulty}}</h5>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </script> <!-- end of Info Modal Template -->
 
   </body>
 </html>

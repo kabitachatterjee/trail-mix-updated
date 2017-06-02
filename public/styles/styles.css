@@ -7,7 +7,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   color: #EEE;
-  height: 300px;
+  height: 400px;
 }
 
 /*.jumbotron {
@@ -21,6 +21,7 @@ body {
 .card img {
   width: 100%;
   height: 40%;
+  border: solid black 2px;
 }
 
 .card {
@@ -28,4 +29,5 @@ body {
   color: white;
   line-height: 18px;
   margin-top: 20px;
+
 }

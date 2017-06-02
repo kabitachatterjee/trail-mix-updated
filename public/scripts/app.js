@@ -15,11 +15,16 @@ $(document).ready(function(){
       var stampedTemplate = Mustache.render(rawTemplate, el);
       $("#trails").append(stampedTemplate);
     });
+    $(".card").on("click", function openInfo() {
+      
+    });
   }
 
   function allTrailsError() {
     console.log("error: failed to load index of all trails");
   }
+
+
 
 
 }); //close of $(document).ready

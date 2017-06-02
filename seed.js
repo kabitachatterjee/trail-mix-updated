@@ -7,7 +7,7 @@ var trailList = [
                   distance: 0.7,
                   difficulty: 3.5,
                   link: "http://www.presidio.gov/trails/batteries-to-bluffs-trail",
-                  image: "https://c1.staticflickr.com/4/3309/5751879507_ba7b25454d.jpg",
+                  image: "http://www.campbellgradinginc.com/sites/campbellgradinginc.com/files/upload/btb_overall_treve_pic.jpg",
                   trailMap: "http://www.mappery.com/maps/Presidio-Trail-and-Overlook-Map.png",
                 },
                 {
