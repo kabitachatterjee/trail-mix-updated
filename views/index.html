@@ -11,14 +11,50 @@
     <!-- VENDOR SCRIPTS -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.2/mustache.min.js"></script>
+
     <!-- APPLICATION SCRIPTS -->
     <script src="/scripts/app.js"></script>
   </head>
+
+
   <body>
-
+    <div class="jumbotron"></div> <!--close class="jumbotron"-->
     <div class="container">
+      <div class="row-spacer" id="trails"></div> <!-- target to which index of trails will be appended-->
+      <div id="modal-target"></div>
+    </div> <!-- end of container div -->
 
-    </div>
+
+    <!-- Trail Cards Template -->
+    <script id="trails-template" type="x-tmpl-mustache">
+      <div class="col-md-4 card row-spacer">
+        <img src="{{image}}" alt="{{name}}" class="img-responsive" data-toggle="modal" data-target="{{_id}}">
+        <h4>{{name}}</h4>
+      </div>
+    </script> <!-- end of Trail Cards Template -->
+
+    <!-- Info Modal Template -->
+    <script id="info-modal-template" type="x-tmpl-mustache">
+      <div class="modal" id="{{_id}}" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">{{name}}</h4>
+            </div>
+            <div class="modal-body">
+              <img class="img-responsive" src="{{trailMap}}" alt="300 movie poster">
+              <h5>More Information:</h5><a href="{{link}}" target="_blank">{{link}}</a>
+              <h5>Distance: {{distance}}</h5>
+              <h5>Difficulty: {{difficulty}}</h5>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </script> <!-- end of Info Modal Template -->
 
   </body>
 </html>
