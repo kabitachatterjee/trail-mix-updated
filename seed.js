@@ -1,0 +1,48 @@
+var db = require("./models");
+var Trail = db.Trail;
+
+var trailList = [
+                {
+                  name: "Batteries to Bluff Trail",
+                  distance: 0.7,
+                  difficulty: 3.5,
+                  link: "http://www.presidio.gov/trails/batteries-to-bluffs-trail",
+                  image: "https://c1.staticflickr.com/4/3309/5751879507_ba7b25454d.jpg",
+                  trailMap: "http://www.mappery.com/maps/Presidio-Trail-and-Overlook-Map.png",
+                },
+                {
+                  name: "California Costal Trail",
+                  distance: 2.4,
+                  difficulty: 2,
+                  link: "http://www.presidio.gov/trails/california-coastal-trail",
+                  image: "http://3cjlxe2q722oycgf1okjyxcf.wpengine.netdna-cdn.com/wp-content/uploads/2010/12/landsendlabyrinth.jpg",
+                  trailMap: "http://www.mappery.com/maps/Presidio-Trail-and-Overlook-Map.png",
+                },
+                {
+                  name: "Park Trail",
+                  distance: 1.7,
+                  difficulty: 2,
+                  link: "http://www.presidio.gov/trails/park-trail",
+                  image: "https://s3-media3.fl.yelpcdn.com/bphoto/lf3YEBeWVf_I6qIiCQK1pA/ls.jpg",
+                  trailMap: "http://www.mappery.com/maps/Presidio-Trail-and-Overlook-Map.png",
+                },
+                {
+                  name: "Mount Sutro Loop",
+                  distance: 2.0,
+                  difficulty: 2.5,
+                  link: "https://www.alltrails.com/trail/us/california/mount-sutro-loop",
+                  image: "https://blogdotemilypolardotcom.files.wordpress.com/2012/05/sutro_120512-14711.jpg",
+                  trailMap: "http://www.peasepress.com/sutromap.pdf",
+                }
+];
+
+Trail.remove({}, function(err, trails) {
+
+  Trail.create(trailList, function(err, trail) {
+    if (err) {
+      return console.log("error: ", err);
+    }
+    console.log("created new trails list");
+    process.exit();
+  });
+});
