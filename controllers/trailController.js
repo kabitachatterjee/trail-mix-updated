@@ -10,10 +10,15 @@ function index(req, res) {
   });
 }
 
+function update(req, res) {
+  console.log("reached trailController.js req.body.id =", req.body.id);
+}
+
+
 module.exports = {
-  index: index
+  index: index,
   // create: create,
   // show: show,
   // destroy: destroy,
-  // update: update
+  update: update
 };

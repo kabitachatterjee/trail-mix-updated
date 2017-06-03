@@ -31,6 +31,7 @@ var controllers = require('./controllers');
 
 app.get("/api", controllers.api.index);
 app.get("/api/trails", controllers.trails.index);
+app.put("/api/trails/:id", controllers.trails.update);
 
  /**********
   * SERVER *

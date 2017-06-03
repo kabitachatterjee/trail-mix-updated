@@ -1,6 +1,10 @@
 console.log("JS is linked");
+var $trailsList;
+var allTrails = [];
 
 $(document).ready(function(){
+
+  $trailsList = $("#trails");
 
   $.ajax({
     method: "GET",
@@ -37,6 +41,11 @@ $(document).ready(function(){
     console.log("error: failed to load index of all trails");
   }
 
+  // open update modal when update button is clicked
+  $trailsList.on("click", ".update-btn", function openUpdateModal() {
+    var id = $(this).attr('data-id');
+    console.log(`clicked update button for /api/trails/${id}`);
+  });
 
 
 
