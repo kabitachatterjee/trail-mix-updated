@@ -22,9 +22,47 @@
     <div class="jumbotron"></div> <!--close class="jumbotron"-->
     <div class="container">
       <div class="row-spacer" id="trails"></div> <!-- target to which index of trails will be appended-->
+      <div class="col-md-4 card add">
+        <img class="img-responsive" src="https://www.iconfinder.com/data/icons/simple-toolbar/512/add_plus_new_user_green_page_file_up_text-512.png">
+      </div>
       <div id="modal-target"></div>
     </div> <!-- end of container div -->
+    <!-- The create Modal -->
+    <div id="addModal" class="modal" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Add your new trail</h4>
+          </div>
+      <!-- Add Modal content -->
+      <div class="modal-body">
+        <!-- <span class="close">&times;</span> -->
+        <form class="form-inline row-spacer col-md-12" id="addForm">
+        <div class="form-group">
+          <label for="title"> Name</label>
+          <input type="text" class="form-control" name="name" placeholder="Trail name">
+        </div>
+        <div class="form-group">
+          <label for="title">Distance</label>
+          <input type="text" class="form-control" name="distance" placeholder="distance in miles">
+        </div>
+        <div class="form-group">
+          <label for="title">Difficulty</label>
+          <input type="number" class="form-control" name="difficulty" placeholder="difficulty on a scale of 1 to 5">
+        </div>
+        <div class="form-group">
+          <label for="title"> Image</label>
+          <input type="text" class="form-control" name="image" placeholder="trail.jpg">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-default">Add New Trail</button>
+     </form>
 
+        <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">Close</button>
+      </div>
+
+    </div>
 
     <!-- Trail Cards Template -->
     <script id="trails-template" type="x-tmpl-mustache">

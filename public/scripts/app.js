@@ -37,7 +37,26 @@ $(document).ready(function(){
     console.log("error: failed to load index of all trails");
   }
 
-
+  $(".add").on("click", function openAddModal() {
+    $("#addModal").show();
+    $('#addForm').on('submit', function(e) {
+      e.preventDefault();
+      $.ajax({
+        method: 'POST',
+        url: '/api/trails/',
+        data: $(this).serialize(),
+        success: addPlaceSuccess,
+        error: addPlaceError
+      });
+      $("#addModal").hide();
+    });
+  });
+function addPlaceSuccess() {
+  console.log("yay!");
+}
+function addPlaceError() {
+  console.log("create error");
+}
 
 
 }); //close of $(document).ready

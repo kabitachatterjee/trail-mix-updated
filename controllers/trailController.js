@@ -10,9 +10,23 @@ function index(req, res) {
   });
 }
 
+function create(req, res) {
+
+   var newTrail = new Trail(req.body);
+  newTrail.save(function(err,trail){
+    if(err){
+      console.log("post error: " + err);
+      res.sendStatus(500);
+    }
+  console.log("Success");
+  // res.redirect(req.get('referer'));
+  res.redirect('back');
+});
+
+}
 module.exports = {
-  index: index
-  // create: create,
+  index: index,
+ create: create
   // show: show,
   // destroy: destroy,
   // update: update
