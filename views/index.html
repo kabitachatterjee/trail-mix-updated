@@ -23,6 +23,7 @@
     <div class="container">
       <div class="row-spacer" id="trails"></div> <!-- target to which index of trails will be appended-->
       <div id="modal-target"></div>
+      <div id="update-modal-target"></div>
     </div> <!-- end of container div -->
 
 
@@ -30,7 +31,7 @@
     <script id="trails-template" type="x-tmpl-mustache">
       <div class="col-md-4 card row-spacer">
         <img src="{{image}}" alt="{{name}}" class="img-responsive" data-toggle="modal" data-target="{{_id}}">
-        <h4>{{name}}</h4><button type="button" class="btn btn-secondary btn-sm update-btn" data-id="{{_id}}">Update Trail</button>
+        <h4>{{name}}</h4><button type="button" class="btn btn-secondary btn-sm update-btn" data-toggle="modal" data-id="{{_id}}" data-target="#update-modal-template">Update Trail</button>
       </div>
     </script> <!-- end of Trail Cards Template -->
 
@@ -43,7 +44,7 @@
               <h4 class="modal-title">{{name}}</h4>
             </div>
             <div class="modal-body">
-              <img class="img-responsive" src="{{trailMap}}" alt="300 movie poster">
+              <img class="img-responsive" src="{{trailMap}}" alt="trail map image">
               <h5>More Information:</h5><a href="{{link}}" target="_blank">{{link}}</a>
               <h5>Distance: {{distance}}</h5>
               <h5>Difficulty: {{difficulty}}</h5>
@@ -55,6 +56,28 @@
         </div>
       </div>
     </script> <!-- end of Info Modal Template -->
+
+    <!-- Update Modal Template -->
+    <div id="update-modal" class="update-modal">
+      <div class="update-modal-content">
+        <span class="close">&times;</span>
+        <form class="form-inline row-spacer col-md-12" id="updateForm">
+        <div class="form-group">
+          <label for="name"> Name</label>
+          <input type="text" class="form-control" name="name" placeholder="Trail Name">
+        </div>
+        <div class="form-group">
+          <label for="image">Trail Map Image</label>
+          <input type="text" class="form-control" name="image" placeholder="http://www.mappery.com/maps/Presidio-Trail-and-Overlook-Map.png">
+        </div>
+        <div class="form-group">
+          <label for="distance">Distance</label>
+          <input type="text" class="form-control" name="distance" placeholder="3.5">
+        </div>
+        <button type="submit" class="btn btn-default">Update</button>
+      </form>
+      </div>
+    </div> <!-- end of Update Modal -->
 
   </body>
 </html>

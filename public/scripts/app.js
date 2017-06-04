@@ -43,8 +43,12 @@ $(document).ready(function(){
 
   // open update modal when update button is clicked
   $trailsList.on("click", ".update-btn", function openUpdateModal() {
-    var id = $(this).attr('data-id');
-    console.log(`clicked update button for /api/trails/${id}`);
+    var updateId = $(this).attr("data-id");
+    console.log(`clicked update button for /api/trails/${updateId}`);
+    var updateModal = $("#update-modal");
+    $("#update-modal-target").html(updateModal);
+    $("#update-modal-target").show();
+    $("#update-modal").show();
   });
 
 
