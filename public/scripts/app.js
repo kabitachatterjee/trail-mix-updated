@@ -2,6 +2,7 @@ console.log("JS is linked");
 var $trailsList;
 var allTrails = [];
 
+
 $(document).ready(function(){
 
   $trailsList = $("#trails");
@@ -14,7 +15,6 @@ $(document).ready(function(){
   });
 
   function indexAllTrails(jsonData) {
-    allTrails = jsonData;
     var rawTemplate = $("#trails-template").html();
     jsonData.forEach(function(el) {
       var stampedTemplate = Mustache.render(rawTemplate, el);
@@ -76,17 +76,10 @@ $(document).ready(function(){
         t.distance = updatedTrail.distance;
       }
     });
-    render();
   }
 
   function updateTrailError() {
     console.log("Error: hit updateTrailError function!")
-  }
-
-  function render() {
-    $trailsList.empty();
-    var trailsHTML = indexAllTrails(allTrails);
-    $trailsList.append(trailsHTML);
   }
 
 }); //close of $(document).ready

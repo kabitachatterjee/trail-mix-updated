@@ -60,13 +60,11 @@
     </script> <!-- end of Info Modal Template -->
 
     <!-- Update Modal Template -->
-    <div id="update-modal" class="update-modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
+    <div id="update-modal" class="update-modal" tabindex="-1" role="dialog">
+      <div class="update-modal-content">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <form class="form-inline row-spacer col-md-12" id="updateForm">
-          <div class="update-modal-header">
-            <h4>Update Trail:</h4>
-          </div>
+          <h4>Update Trail:</h4>
           <div class="form-group">
             <label for="name">Name</label>
             <input id="updatedTrailName" type="text" class="form-control" name="name" placeholder="Trail Name">
@@ -91,7 +89,9 @@
             <label for="trailImage">Trail Image</label>
             <input id="updatedImage" type="text" class="form-control" name="trailImage" placeholder="http://www.campbellgradinginc.com/sites/campbellgradinginc.com/files/upload/btb_overall_treve_pic.jpg">
           </div>
-          <button type="submit" class="submit btn btn-default">Save Updates</button>
+          <div class="update-modal-footer">
+            <button type="submit" class="submit btn btn-default pull-right">Save Updates</button>
+          </div>
         </form>
       </div> <!-- end of Update Modal content -->
     </div> <!-- end of Update Modal -->
