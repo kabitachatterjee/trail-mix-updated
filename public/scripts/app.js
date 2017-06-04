@@ -23,10 +23,10 @@ $(document).ready(function(){
       });
 
       var stampedInfoTemplate = Mustache.render(rawInfoTemplate, currentInfo[0]);
-      console.log(stampedInfoTemplate);
       $("#modal-target").html(stampedInfoTemplate);
       $("#modal-target").show();
       $(".modal").show();
+      $("#addModal").hide();
       $("button").on("click", function(e) {
         $(".modal").hide();
       });
@@ -49,6 +49,9 @@ $(document).ready(function(){
         error: addPlaceError
       });
       $("#addModal").hide();
+    });
+    $("button").on("click", function(e) {
+      $(".modal").hide();
     });
   });
 function addPlaceSuccess() {
