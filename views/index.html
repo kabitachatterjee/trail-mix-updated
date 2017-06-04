@@ -62,24 +62,24 @@
       <div class="modal-content">
         <span class="close">&times;</span>
         <form class="form-inline row-spacer col-md-12" id="updateForm">
-        <div class="update-modal-header">
-          <h4>Update Trail:</h4>
-        </div>
-        <div class="form-group">
-          <label for="name"> Name</label>
-          <input type="text" class="form-control" name="name" placeholder="Trail Name">
-        </div>
-        <div class="form-group">
-          <label for="image">Trail Map Image</label>
-          <input type="text" class="form-control" name="image" placeholder="http://www.mappery.com/maps/Presidio-Trail-and-Overlook-Map.png">
-        </div>
-        <div class="form-group">
-          <label for="distance">Distance</label>
-          <input type="text" class="form-control" name="distance" placeholder="3.5">
-        </div>
-        <button type="submit" class="submit btn btn-default">Save Updates</button>
-      </form>
-      </div>
+          <div class="update-modal-header">
+            <h4>Update Trail:</h4>
+          </div>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input id="updatedTrailName" type="text" class="form-control" name="name" placeholder="Trail Name">
+          </div>
+          <div class="form-group">
+            <label for="trailMap">Trail Map</label>
+            <input id="updatedTrailMap" type="text" class="form-control" name="trailMap" placeholder="http://www.mappery.com/maps/Presidio-Trail-and-Overlook-Map.png">
+          </div>
+          <div class="form-group">
+            <label for="distance">Distance</label>
+            <input id="updatedDistance" type="text" class="form-control" name="distance" placeholder="3.5">
+          </div>
+          <button type="submit" class="submit btn btn-default">Save Updates</button>
+        </form>
+      </div> <!-- end of Update Modal content -->
     </div> <!-- end of Update Modal -->
 
   </body>

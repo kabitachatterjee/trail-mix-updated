@@ -14,6 +14,7 @@ $(document).ready(function(){
   });
 
   function indexAllTrails(jsonData) {
+    allTrails = jsonData;
     var rawTemplate = $("#trails-template").html();
     jsonData.forEach(function(el) {
       var stampedTemplate = Mustache.render(rawTemplate, el);
@@ -48,13 +49,14 @@ $(document).ready(function(){
     var updateModal = $("#update-modal");
     $("#update-modal-target").html(updateModal);
     $("#update-modal-target").show();
-    $("#update-modal").show();
-    $(".submit").on("click", function(e) {
+    updateModal.show();
+    $("#updateForm").on("click", ".submit", function(e) {
+      var updateData = $("#updateForm").serialize();
       e.preventDefault();
         $.ajax({
           method: 'PUT',
           url: `/api/trails/${updateId}`,
-          data: $(this).serialize(),
+          data: updateData,
           success: updateTrailSuccess,
           error: updateTrailError
         });
@@ -64,11 +66,27 @@ $(document).ready(function(){
 
   function updateTrailSuccess(jsonData) {
     console.log("Reached updateTrailSuccess function in app.js!! jsonData: ", jsonData);
+
+    var updatedTrail = jsonData;
+    var updatedTrailId = updatedTrail._id;
+
+    allTrails = allTrails.map(function(t, i) {
+      if (t._id === updatedTrailId) {
+        t.name = updatedTrail.name;
+        t.distance = updatedTrail.distance;
+      }
+    });
+    render();
   }
 
   function updateTrailError() {
     console.log("Error: hit updateTrailError function!")
   }
 
+  function render() {
+    $trailsList.empty();
+    var trailsHTML = indexAllTrails(allTrails);
+    $trailsList.append(trailsHTML);
+  }
 
 }); //close of $(document).ready

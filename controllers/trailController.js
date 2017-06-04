@@ -11,7 +11,17 @@ function index(req, res) {
 }
 
 function update(req, res) {
-  console.log("reached trailController.js req.body.id =", req.body.id);
+  console.log(req.body.name);
+  console.log("reached trailController.js req.params.id = ", req.params.id, "req.body = ", req.body);
+  var updateId = req.params.id;
+  Trail.findOneAndUpdate(updateId, req.body, {new: true})
+    .then(function(err, trail){
+      if (err) {
+        console.log("error updating trail", err)
+      }
+      console.log(trail);
+      res.json(trail);
+    });
 }
 
 
