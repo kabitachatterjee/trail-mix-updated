@@ -49,8 +49,26 @@ $(document).ready(function(){
     $("#update-modal-target").html(updateModal);
     $("#update-modal-target").show();
     $("#update-modal").show();
+    $(".submit").on("click", function(e) {
+      e.preventDefault();
+        $.ajax({
+          method: 'PUT',
+          url: `/api/trails/${updateId}`,
+          data: $(this).serialize(),
+          success: updateTrailSuccess,
+          error: updateTrailError
+        });
+      $("#update-modal").hide();
+    });
   });
 
+  function updateTrailSuccess(jsonData) {
+    console.log("Reached updateTrailSuccess function in app.js!! jsonData: ", jsonData);
+  }
+
+  function updateTrailError() {
+    console.log("Error: hit updateTrailError function!")
+  }
 
 
 }); //close of $(document).ready
