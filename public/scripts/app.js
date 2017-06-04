@@ -69,7 +69,7 @@ $(document).ready(function(){
 
     var updatedTrail = jsonData;
     var updatedTrailId = updatedTrail._id;
-
+    console.log(updatedTrail, updatedTrailId);
     allTrails = allTrails.map(function(t, i) {
       if (t._id === updatedTrailId) {
         t.name = updatedTrail.name;

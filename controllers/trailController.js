@@ -14,12 +14,15 @@ function update(req, res) {
   console.log(req.body.name);
   console.log("reached trailController.js req.params.id = ", req.params.id, "req.body = ", req.body);
   var updateId = req.params.id;
-  Trail.findOneAndUpdate(updateId, req.body, {new: true})
+  console.log(updateId);
+  Trail.findOneAndUpdate({"_id":updateId}, req.body, {new: true})
+
     .then(function(err, trail){
+
       if (err) {
         console.log("error updating trail", err)
       }
-      console.log(trail);
+      //console.log(trail);
       res.json(trail);
     });
 }
