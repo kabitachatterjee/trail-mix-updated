@@ -3,11 +3,15 @@ body {
 }
 
 .jumbotron {
-  background-image: url("http://ma6ab.com/img/img_placeholder.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  color: #EEE;
-  height: 400px;
+  background-color: black;
+  height: 175px;
+}
+
+.logo {
+  margin-left: 80px;
+  width: 350px;
 }
 
 .row-spacer {
@@ -37,8 +41,8 @@ body {
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     padding-top: 50px; /* Location of the box */
-    left: 0;
-    top: 0;
+    left: 10px;
+    top: 10px;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
@@ -58,5 +62,5 @@ body {
 
 .submit {
   padding: 5px auto;
-  margin: 5px auto;
+  margin: 10px auto;
 }

@@ -19,7 +19,9 @@
 
 
   <body>
-    <div class="jumbotron"></div> <!--close class="jumbotron"-->
+    <div class="jumbotron">
+      <img class="logo" alt="logo" src="./images/Artboard1.png">
+    </div> <!--close class="jumbotron"-->
     <div class="container">
       <div class="row-spacer" id="trails"></div> <!-- target to which index of trails will be appended-->
       <div id="modal-target"></div>
@@ -76,6 +78,18 @@
           <div class="form-group">
             <label for="distance">Distance</label>
             <input id="updatedDistance" type="text" class="form-control" name="distance" placeholder="3.5">
+          </div>
+          <div class="form-group">
+            <label for="difficulty">Difficulty</label>
+            <input id="updatedDifficulty" type="text" class="form-control" name="difficulty" placeholder="2">
+          </div>
+          <div class="form-group">
+            <label for="link">Link to More Info</label>
+            <input id="updatedInfoLink" type="text" class="form-control" name="moreInfo" placeholder="http://www.presidio.gov/trails/batteries-to-bluffs-trail">
+          </div>
+          <div class="form-group">
+            <label for="trailImage">Trail Image</label>
+            <input id="updatedImage" type="text" class="form-control" name="trailImage" placeholder="http://www.campbellgradinginc.com/sites/campbellgradinginc.com/files/upload/btb_overall_treve_pic.jpg">
           </div>
           <button type="submit" class="submit btn btn-default">Save Updates</button>
         </form>
