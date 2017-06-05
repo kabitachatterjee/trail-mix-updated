@@ -1,5 +1,5 @@
 console.log("JS is linked");
-
+var allTrails = [];
 $(document).ready(function(){
 
   $.ajax({
@@ -10,6 +10,7 @@ $(document).ready(function(){
   });
 
   function indexAllTrails(jsonData) {
+    allTrails = jsonData;
     var rawTemplate = $("#trails-template").html();
     jsonData.forEach(function(el) {
       var stampedTemplate = Mustache.render(rawTemplate, el);
@@ -23,10 +24,10 @@ $(document).ready(function(){
       });
 
       var stampedInfoTemplate = Mustache.render(rawInfoTemplate, currentInfo[0]);
-      console.log(stampedInfoTemplate);
       $("#modal-target").html(stampedInfoTemplate);
       $("#modal-target").show();
       $(".modal").show();
+      $("#addModal").hide();
       $("button").on("click", function(e) {
         $(".modal").hide();
       });
@@ -37,7 +38,33 @@ $(document).ready(function(){
     console.log("error: failed to load index of all trails");
   }
 
-
+  $(".add").on("click", function openAddModal() {
+    $("#addModal").show();
+    $('#addForm').on('submit', function(e) {
+      e.preventDefault();
+      $.ajax({
+        method: 'POST',
+        url: '/api/trails/',
+        data: $(this).serialize(),
+        success: addPlaceSuccess,
+        error: addPlaceError
+      });
+      $("#addModal").hide();
+    });
+    $("button").on("click", function(e) {
+      $(".modal").hide();
+    });
+  });
+function addPlaceSuccess() {
+  console.log("yay!");
+  console.log(allTrails.length);
+    if(allTrails.length === allTrails.length + 1){
+      indexAllTrails([allTrails[allTrails.length - 1]]);
+      }
+    }
+function addPlaceError() {
+  console.log("create error");
+}
 
 
 }); //close of $(document).ready
