@@ -1,6 +1,11 @@
 console.log("JS is linked");
+var $trailsList;
 var allTrails = [];
+
+
 $(document).ready(function(){
+
+  $trailsList = $("#trails");
 
   $.ajax({
     method: "GET",
@@ -38,6 +43,41 @@ $(document).ready(function(){
     console.log("error: failed to load index of all trails");
   }
 
+  // open update modal when update button is clicked
+  $trailsList.on("click", ".update-btn", function openUpdateModal() {
+    var updateId = $(this).attr("data-id");
+    console.log(`clicked update button for /api/trails/${updateId}`);
+    var updateModal = $("#update-modal");
+    $("#update-modal-target").html(updateModal);
+    $("#update-modal-target").show();
+    updateModal.show();
+    $("#updateForm").on("click", ".submit", function(e) {
+      var updateData = $("#updateForm").serialize();
+      e.preventDefault();
+        $.ajax({
+          method: 'PUT',
+          url: `/api/trails/${updateId}`,
+          data: updateData,
+          success: updateTrailSuccess,
+          error: updateTrailError
+        });
+      $("#update-modal").hide();
+    });
+  });
+
+  function updateTrailSuccess(jsonData) {
+    console.log("Reached updateTrailSuccess function in app.js!!");
+
+    var updatedTrail = jsonData;
+    var updatedTrailId = updatedTrail._id;
+    console.log(updatedTrail, updatedTrailId);
+    allTrails = allTrails.map(function(t, i) {
+      if (t._id === updatedTrailId) {
+        t.name = updatedTrail.name;
+        t.distance = updatedTrail.distance;
+      }
+    });
+  }
   $(".add").on("click", function openAddModal() {
     $("#addModal").show();
     $('#addForm').on('submit', function(e) {
@@ -66,5 +106,8 @@ function addPlaceError() {
   console.log("create error");
 }
 
+  function updateTrailError() {
+    console.log("Error: hit updateTrailError function!")
+  }
 
 }); //close of $(document).ready

@@ -9,6 +9,23 @@ function index(req, res) {
   });
 }
 
+function update(req, res) {
+  console.log(req.body.name);
+  console.log("reached trailController.js req.params.id = ", req.params.id, "req.body = ", req.body);
+  var updateId = req.params.id;
+  console.log(updateId);
+  Trail.findOneAndUpdate({"_id":updateId}, req.body, {new: true})
+
+    .then(function(err, trail){
+      if (err) {
+        console.log("error updating trail", err)
+      }
+      //console.log(trail);
+      res.json(trail);
+    });
+}
+
+
 function create(req, res) {
 
    var newTrail = new Trail(req.body);
@@ -24,8 +41,8 @@ function create(req, res) {
 }
 module.exports = {
   index: index,
- create: create
+ create: create,
   // show: show,
   // destroy: destroy,
-  // update: update
+  update: update
 };
