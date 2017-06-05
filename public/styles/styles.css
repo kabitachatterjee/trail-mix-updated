@@ -31,6 +31,14 @@ body {
   margin-top: 20px;
   /*font-weight: 100;*/
 }
+.add {
+  border: 1px dashed black;
+  font-weight: 400;
+  font-size: 170px;
+  text-align: center;
+  margin: 20px;
+}
+
 
 .modal {
   overflow: auto;
@@ -40,6 +48,21 @@ body {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
+    padding-top: 50px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0); /* Black w/ opacity */
+    color: olivedrab;
+    overflow: auto;
+}
+
+.delete-modal {
+    display: none; /* Hidden by default */
+    /*position: fixed; /* Stay in place */
+    z-index: auto; /* Sit on top */
     padding-top: 50px; /* Location of the box */
     left: 0;
     top: 0;
