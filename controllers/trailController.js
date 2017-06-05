@@ -18,7 +18,6 @@ function update(req, res) {
   Trail.findOneAndUpdate({"_id":updateId}, req.body, {new: true})
 
     .then(function(err, trail){
-
       if (err) {
         console.log("error updating trail", err)
       }

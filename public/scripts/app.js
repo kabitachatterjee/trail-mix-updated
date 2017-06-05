@@ -15,6 +15,7 @@ $(document).ready(function(){
   });
 
   function indexAllTrails(jsonData) {
+    allTrails = jsonData;
     var rawTemplate = $("#trails-template").html();
     jsonData.forEach(function(el) {
       var stampedTemplate = Mustache.render(rawTemplate, el);
@@ -65,7 +66,7 @@ $(document).ready(function(){
   });
 
   function updateTrailSuccess(jsonData) {
-    console.log("Reached updateTrailSuccess function in app.js!! jsonData: ", jsonData);
+    console.log("Reached updateTrailSuccess function in app.js!!");
 
     var updatedTrail = jsonData;
     var updatedTrailId = updatedTrail._id;
