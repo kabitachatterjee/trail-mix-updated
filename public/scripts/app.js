@@ -29,10 +29,10 @@ $(document).ready(function(){
       });
 
       var stampedInfoTemplate = Mustache.render(rawInfoTemplate, currentInfo[0]);
-      console.log(stampedInfoTemplate);
       $("#modal-target").html(stampedInfoTemplate);
       $("#modal-target").show();
       $(".modal").show();
+      $("#addModal").hide();
       $("button").on("click", function(e) {
         $(".modal").hide();
       });
@@ -78,6 +78,33 @@ $(document).ready(function(){
       }
     });
   }
+  $(".add").on("click", function openAddModal() {
+    $("#addModal").show();
+    $('#addForm').on('submit', function(e) {
+      e.preventDefault();
+      $.ajax({
+        method: 'POST',
+        url: '/api/trails/',
+        data: $(this).serialize(),
+        success: addPlaceSuccess,
+        error: addPlaceError
+      });
+      $("#addModal").hide();
+    });
+    $("button").on("click", function(e) {
+      $(".modal").hide();
+    });
+  });
+function addPlaceSuccess() {
+  console.log("yay!");
+  console.log(allTrails.length);
+    if(allTrails.length === allTrails.length + 1){
+      indexAllTrails([allTrails[allTrails.length - 1]]);
+      }
+    }
+function addPlaceError() {
+  console.log("create error");
+}
 
   function updateTrailError() {
     console.log("Error: hit updateTrailError function!")

@@ -51,6 +51,18 @@ body {
     overflow: auto;
 }
 
+#addModal {
+  display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto;
+}
+
 /* Modal Content */
 .update-modal-content {
     background-color: #fefefe;
@@ -64,4 +76,36 @@ body {
 .submit {
   padding: 10px auto;
   margin: 20px auto;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.form-control {
+  padding: 6px 30px;
+}
+
+
+.modal-body .form-horizontal .col-sm-2,
+.modal-body .form-inline .col-sm-10 {
+    width: 100%
+}
+
+.modal-body .form-horizontal .control-label {
+    text-align: left;
+}
+.modal-body .form-horizontal .col-sm-offset-2 {
+    margin-left: 15px;
 }
