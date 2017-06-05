@@ -41,6 +41,10 @@ $(document).ready(function(){
     $("#update-modal-target").html(updateModal);
     $("#update-modal-target").show();
     updateModal.show();
+    $(".close").on("click", function(e) {
+      e.preventDefault();
+      updateModal.hide();
+    })
     $("#updateForm").on("click", ".submit", function(e) {
       var updateData = $("#updateForm").serialize();
       e.preventDefault();
@@ -51,7 +55,7 @@ $(document).ready(function(){
           success: updateTrailSuccess,
           error: updateTrailError
         });
-      $("#update-modal").hide();
+      updateModal.hide();
     });
   });
 

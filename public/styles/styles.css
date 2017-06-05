@@ -41,60 +41,27 @@ body {
 
 
 .modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: auto; /* Sit on top */
+  padding-top: 50px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  /*background-color: rgb(0,0,0); /* Fallback color */
+  /*background-color: rgba(0,0,0,0); /* Black w/ opacity */
+  color: olivedrab;
   overflow: auto;
 }
 
-.update-modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 50px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0); /* Black w/ opacity */
-    color: olivedrab;
-    overflow: auto;
-}
-
-.delete-modal {
-    display: none; /* Hidden by default */
-    /*position: fixed; /* Stay in place */
-    z-index: auto; /* Sit on top */
-    padding-top: 50px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0); /* Black w/ opacity */
-    color: olivedrab;
-    overflow: auto;
-}
-
-#addModal {
-  display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto;
-}
-
 /* Modal Content */
-.update-modal-content {
+/*.updateContent {
     background-color: #fefefe;
     margin-left: 40px;
     padding: 5px;
     border: 1px solid black;
-    width: 70%;
-    height: 60%;
-}
+}*/
 
 .submit {
   padding: 10px auto;
