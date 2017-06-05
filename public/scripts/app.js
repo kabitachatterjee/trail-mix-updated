@@ -78,6 +78,12 @@ $(document).ready(function(){
       }
     });
   }
+
+  function updateTrailError() {
+    console.log("Error: hit updateTrailError function!")
+  }
+
+
   $(".add").on("click", function openAddModal() {
     $("#addModal").show();
     $('#addForm').on('submit', function(e) {
@@ -86,8 +92,8 @@ $(document).ready(function(){
         method: 'POST',
         url: '/api/trails/',
         data: $(this).serialize(),
-        success: addPlaceSuccess,
-        error: addPlaceError
+        success: addTrailSuccess,
+        error: addTrailError
       });
       $("#addModal").hide();
     });
@@ -95,19 +101,50 @@ $(document).ready(function(){
       $(".modal").hide();
     });
   });
-function addPlaceSuccess() {
+
+
+function addTrailSuccess() {
   console.log("yay!");
   console.log(allTrails.length);
     if(allTrails.length === allTrails.length + 1){
       indexAllTrails([allTrails[allTrails.length - 1]]);
       }
     }
-function addPlaceError() {
+function addTrailError() {
   console.log("create error");
 }
 
-  function updateTrailError() {
-    console.log("Error: hit updateTrailError function!")
-  }
+// open update modal when update button is clicked
+$trailsList.on("click", ".delete-btn", function openDeleteModal() {
+  var deleteId = $(this).attr("data-id");
+  console.log(`clicked delete button for /api/trails/${deleteId}`);
+  var deleteModal = $("#delete-modal");
+  $("#delete-modal-target").html(deleteModal);
+  // $("#delete-modal-target").show();
+  deleteModal.show();
+  $("#confirmDelete").on("click", function(e) {
+    //e.preventDefault();
+      $.ajax({
+        method: 'DELETE',
+        url: `/api/trails/${deleteId}`,
+        success: deleteTrailSuccess,
+        error: deleteTrailError
+      });
+    deleteModal.hide();
+  });
+});
+
+function deleteTrailSuccess() {
+  console.log("deleted successfully");
+}
+
+function deleteTrailError() {
+  console.log("error on delete");
+}
+
+
+
+
+
 
 }); //close of $(document).ready

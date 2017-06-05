@@ -39,10 +39,22 @@ function create(req, res) {
 });
 
 }
+
+function destroy(req, res) {
+  console.log("trail_id:",req.params.id);
+  var trailID = req.params.id;
+  Trail.findByIdAndRemove({"_id": trailID}, function(err, trail) {
+    if (err) {
+      console.log("delete errror");
+    }
+    console.log("deleted trail successfully");
+    res.json(trail);
+  })
+}
 module.exports = {
   index: index,
  create: create,
   // show: show,
-  // destroy: destroy,
-  update: update
+ destroy: destroy,
+ update: update
 };
