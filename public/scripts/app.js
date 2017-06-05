@@ -1,5 +1,5 @@
 console.log("JS is linked");
-
+var allTrails = [];
 $(document).ready(function(){
 
   $.ajax({
@@ -10,6 +10,7 @@ $(document).ready(function(){
   });
 
   function indexAllTrails(jsonData) {
+    allTrails = jsonData;
     var rawTemplate = $("#trails-template").html();
     jsonData.forEach(function(el) {
       var stampedTemplate = Mustache.render(rawTemplate, el);
@@ -56,7 +57,11 @@ $(document).ready(function(){
   });
 function addPlaceSuccess() {
   console.log("yay!");
-}
+  console.log(allTrails.length);
+    if(allTrails.length === allTrails.length + 1){
+      indexAllTrails([allTrails[allTrails.length - 1]]);
+      }
+    }
 function addPlaceError() {
   console.log("create error");
 }

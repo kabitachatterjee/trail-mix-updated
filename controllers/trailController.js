@@ -5,7 +5,6 @@ var Trail = db.Trail;
 function index(req, res) {
   // send back all our trails as JSON objects
   Trail.find({}, function(err, allTrails) {
-    //console.log(allTrails);
     res.json(allTrails);
   });
 }
@@ -19,8 +18,7 @@ function create(req, res) {
       res.sendStatus(500);
     }
   console.log("Success");
-  // res.redirect(req.get('referer'));
-  res.redirect('back');
+  res.json(newTrail);
 });
 
 }
