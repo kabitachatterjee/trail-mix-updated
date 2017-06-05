@@ -31,6 +31,14 @@ body {
   margin-top: 20px;
   /*font-weight: 100;*/
 }
+.add {
+  border: 1px dashed black;
+  font-weight: 400;
+  font-size: 170px;
+  text-align: center;
+  margin: 20px;
+}
+
 
 .modal {
   overflow: auto;
