@@ -18,6 +18,7 @@ $(document).ready(function(){
   $(".add").on("click", function openAddModal() {
     $("#addModal").show();
     $('#addForm').on('submit', function(e) {
+
       e.preventDefault();
       $.ajax({
         method: 'POST',
@@ -41,7 +42,11 @@ $(document).ready(function(){
     $("#update-modal-target").html(updateModal);
     $("#update-modal-target").show();
     updateModal.show();
-    $("#updateForm").on("click", ".submit", function(e) {
+    $(".close").on("click", function(e) {
+      e.preventDefault();
+      updateModal.hide();
+    })
+    $(".submit").on("click", function(e) {
       var updateData = $("#updateForm").serialize();
       e.preventDefault();
         $.ajax({
@@ -51,7 +56,7 @@ $(document).ready(function(){
           success: updateTrailSuccess,
           error: updateTrailError
         });
-      $("#update-modal").hide();
+      updateModal.hide();
     });
   });
 
@@ -89,7 +94,7 @@ $(document).ready(function(){
       var stampedInfoTemplate = Mustache.render(rawInfoTemplate, currentInfo[0]);
       $("#modal-target").html(stampedInfoTemplate);
       $("#modal-target").show();
-      $(".modal").show();
+      $(".info-modal").show();
       $("#addModal").hide();
       $("button").on("click", function(e) {
         $(".modal").hide();
@@ -97,45 +102,82 @@ $(document).ready(function(){
     });
   } // close of indexAllTrails
 
+  $('.search').on('submit', function(e) {
+    e.preventDefault();
+    var search = $('.search input').val();
+    console.log(search);
+    searchTrailSuccess(search);
+  });
+
+
   function allTrailsError() {
     console.log("error: failed to load index of all trails");
   }
 
-  function addTrailSuccess() {
-    console.log("yay!");
-    console.log(allTrails.length);
-      if(allTrails.length === allTrails.length + 1){
-        indexAllTrails([allTrails[allTrails.length - 1]]);
-        }
-      }
+  function addTrailSuccess(jsonData) {
+    allTrails.push(jsonData);
+    console.log(allTrails);
+    $("#trails").empty();
+    indexAllTrails(allTrails);
+  }
+
   function addTrailError() {
     console.log("create error");
   }
 
   function updateTrailSuccess(jsonData) {
-    console.log("Reached updateTrailSuccess function in app.js!!");
 
     var updatedTrail = jsonData;
     var updatedTrailId = updatedTrail._id;
-    console.log(updatedTrail, updatedTrailId);
+
     allTrails = allTrails.map(function(t, i) {
       if (t._id === updatedTrailId) {
         t.name = updatedTrail.name;
         t.distance = updatedTrail.distance;
       }
+      return t;
     });
+    $("#trails").empty();
+    indexAllTrails(allTrails);
+    console.log("successfully updated", updatedTrailId)
   }
 
   function updateTrailError() {
     console.log("Error: hit updateTrailError function!")
   }
 
-  function deleteTrailSuccess() {
+  function deleteTrailSuccess(jsonData) {
+    var trail = jsonData;
+    var trailId = trail._id;
+
+    allTrails.filter(function(t, i, arr) {
+      if (t._id === trailId) {
+        arr.splice(i, 1);
+      }
+      return arr;
+    });
+
+    $("#trails").empty();
+    indexAllTrails(allTrails);
     console.log("deleted successfully");
-  }
+  } // end of deleteTrailSuccess
 
   function deleteTrailError() {
     console.log("error on delete");
+  }
+
+  function searchTrailSuccess(search) {
+
+    allTrails = allTrails.filter(function(t,i) {
+      var trail = t.name.toLowerCase();
+      return trail.includes(search.toLowerCase());
+    });
+
+    console.log(allTrails);
+
+    $("#trails").empty();
+    $(".add").hide();
+    indexAllTrails(allTrails);
   }
 
 }); //close of $(document).ready
