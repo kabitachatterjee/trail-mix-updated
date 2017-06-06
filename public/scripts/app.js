@@ -18,6 +18,7 @@ $(document).ready(function(){
   $(".add").on("click", function openAddModal() {
     $("#addModal").show();
     $('#addForm').on('submit', function(e) {
+
       e.preventDefault();
       $.ajax({
         method: 'POST',
