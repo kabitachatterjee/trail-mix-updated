@@ -106,13 +106,18 @@ $(document).ready(function(){
     console.log("error: failed to load index of all trails");
   }
 
-  function addTrailSuccess() {
-    console.log("yay!");
-    console.log(allTrails.length);
-      if(allTrails.length === allTrails.length + 1){
-        indexAllTrails([allTrails[allTrails.length - 1]]);
-        }
-      }
+  function addTrailSuccess(jsonData) {
+    // console.log("yay!");
+    // console.log(allTrails.length);
+    // if(allTrails.length === allTrails.length + 1){
+    //   indexAllTrails([allTrails[allTrails.length - 1]]);
+    // }
+    allTrails.push(jsonData);
+    console.log(allTrails);
+    $("#trails").empty();
+    indexAllTrails(allTrails);
+  }
+
   function addTrailError() {
     console.log("create error");
   }
