@@ -134,3 +134,13 @@ label {
   border: none;
   color: white;
 }
+
+.search {
+  margin-right: 15px;
+}
+
+.searchBtn {
+  background-color: #2bb874;
+  color: white;
+  border: none;
+}

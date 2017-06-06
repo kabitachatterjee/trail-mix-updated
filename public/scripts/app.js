@@ -146,7 +146,6 @@ $(document).ready(function(){
     console.log("Error: hit updateTrailError function!")
   }
 
-//////////
   function deleteTrailSuccess(jsonData) {
     var trail = jsonData;
     var trailId = trail._id;
@@ -168,15 +167,12 @@ $(document).ready(function(){
   }
 
   function searchTrailSuccess(search) {
-    console.log("yay");
-    console.log(search);
-    console.log(allTrails);
-    for(var index = 0; index < allTrails.length; index++) {
-      if(((allTrails[index].name).toLowerCase()) === (search.toLowerCase())) {
-        allTrails = [allTrails[index]];
-        break;
-      }
-    }
+
+    allTrails = allTrails.filter(function(t,i) {
+      var trail = t.name.toLowerCase();
+      return trail.includes(search.toLowerCase());
+    });
+
     console.log(allTrails);
 
     $("#trails").empty();
