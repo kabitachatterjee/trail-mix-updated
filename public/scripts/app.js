@@ -107,11 +107,6 @@ $(document).ready(function(){
   }
 
   function addTrailSuccess(jsonData) {
-    // console.log("yay!");
-    // console.log(allTrails.length);
-    // if(allTrails.length === allTrails.length + 1){
-    //   indexAllTrails([allTrails[allTrails.length - 1]]);
-    // }
     allTrails.push(jsonData);
     console.log(allTrails);
     $("#trails").empty();
@@ -140,7 +135,22 @@ $(document).ready(function(){
     console.log("Error: hit updateTrailError function!")
   }
 
-  function deleteTrailSuccess() {
+  function deleteTrailSuccess(jsonData) {
+    var trail = jsonData;
+    var trailId = trail._id;
+    console.log("delete trail: ", trailId);
+
+    allTrails.filter(function(t, i, arr) {
+      if (t._id === trailId) {
+        arr.splice(i, 1);
+      }
+      return arr;
+    })
+    console.log(allTrails);
+
+
+    $("#trails").empty();
+    indexAllTrails(allTrails);
     console.log("deleted successfully");
   }
 
