@@ -118,17 +118,20 @@ $(document).ready(function(){
   }
 
   function updateTrailSuccess(jsonData) {
-    console.log("Reached updateTrailSuccess function in app.js!!");
 
     var updatedTrail = jsonData;
     var updatedTrailId = updatedTrail._id;
-    console.log(updatedTrail, updatedTrailId);
+
     allTrails = allTrails.map(function(t, i) {
       if (t._id === updatedTrailId) {
         t.name = updatedTrail.name;
         t.distance = updatedTrail.distance;
       }
+      return t;
     });
+    $("#trails").empty();
+    indexAllTrails(allTrails);
+    console.log("successfully updated", updatedTrailId)
   }
 
   function updateTrailError() {
