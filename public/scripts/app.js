@@ -156,7 +156,6 @@ $(document).ready(function(){
       }
       return arr;
     });
-
     $("#trails").empty();
     indexAllTrails(allTrails);
     console.log("deleted successfully");
@@ -167,6 +166,7 @@ $(document).ready(function(){
   }
 
   function searchTrailSuccess(search) {
+    var unfilteredTrails = allTrails;
 
     allTrails = allTrails.filter(function(t,i) {
       var trail = t.name.toLowerCase();
@@ -178,6 +178,7 @@ $(document).ready(function(){
     $("#trails").empty();
     $(".add").hide();
     indexAllTrails(allTrails);
+    allTrails = unfilteredTrails;
   }
 
 }); //close of $(document).ready
