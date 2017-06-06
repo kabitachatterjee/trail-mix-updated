@@ -45,7 +45,7 @@ $(document).ready(function(){
       e.preventDefault();
       updateModal.hide();
     })
-    $("#updateForm").on("click", ".submit", function(e) {
+    $(".submit").on("click", function(e) {
       var updateData = $("#updateForm").serialize();
       e.preventDefault();
         $.ajax({
@@ -93,7 +93,7 @@ $(document).ready(function(){
       var stampedInfoTemplate = Mustache.render(rawInfoTemplate, currentInfo[0]);
       $("#modal-target").html(stampedInfoTemplate);
       $("#modal-target").show();
-      $(".modal").show();
+      $(".info-modal").show();
       $("#addModal").hide();
       $("button").on("click", function(e) {
         $(".modal").hide();

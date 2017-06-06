@@ -25,8 +25,7 @@
     <div class="container">
       <div class="row-spacer" id="trails"></div> <!-- target to which index of trails will be appended-->
       <div class="col-md-4 add">
-        +
-        <!-- <img class="img-responsive" src="https://www.iconfinder.com/data/icons/simple-toolbar/512/add_plus_new_user_green_page_file_up_text-512.png">-->
+        <img class="img-responsive" src="./images/plus-icon.png">
       </div>
       <div id="modal-target"></div>
       <div id="update-modal-target"></div>
@@ -34,7 +33,7 @@
     </div> <!-- end of container div -->
 
     <!-- The create Modal -->
-    <div id="addModal" class="modal" role="dialog" aria-hidden="true">
+    <div id="addModal" class="modal" role="dialog" aria-hidden="true" tabindex="-1">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -46,9 +45,9 @@
           </div>
       <!-- Add Modal content -->
       <div class="modal-body">
-        <form class="form-horizontal col-md-12" id="addForm">
+    <form class="form-horizontal col-md-12" id="addForm">
         <div class="form-group">
-          <label for="name" class="col-sm-2 control-label"> Name</label>
+          <label for="name" class="col-sm-2 control-label">Name</label>
           <input type="text" class="form-control col-sm-10" name="name" placeholder="Trail name">
         </div>
         <div class="form-group">
@@ -60,28 +59,27 @@
           <input type="number" class="form-control col-sm-10" name="difficulty" placeholder="difficulty on a scale of 1 to 5">
         </div>
         <div class="form-group">
-          <label for="image" class="col-sm-2 control-label"> Image</label>
+          <label for="image" class="col-sm-2 control-label">Image</label>
           <input type="text" class="form-control col-sm-10" name="image" placeholder="trail.jpg">
         </div>
         <div class="form-group">
-          <label for="link class="col-sm-2 control-label""> Link to website</label>
+          <label for="link" class="col-sm-2 control-label">Link to website</label>
           <input type="text" class="form-control col-sm-10" name="link" placeholder="external website link">
         </div>
         <div class="form-group">
-          <label for="trailMap" class="col-sm-2 control-label"> Trail Map</label>
+          <label for="trailMap" class="col-sm-2 control-label">Trail Map</label>
           <input type="text" class="form-control col-sm-10" name="trailMap" placeholder="trail map.jpg">
         </div>
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
-          <button type="submit" class="btn btn-default">Add New Trail</button>
+
         </div>
       </div>
-     </form>
+    </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">Close</button>
+        <button type="submit" class="btn btn-default addNewBtn">Add New Trail</button>
       </div>
-
     </div>
   </div>
 </div> <!-- End of create trail modal -->
@@ -97,7 +95,7 @@
 
     <!-- Info Modal Template -->
     <script id="info-modal-template" type="x-tmpl-mustache">
-      <div class="modal" id="{{_id}}" role="dialog" aria-hidden="true">
+      <div class="modal info-modal" id="{{_id}}" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -110,7 +108,7 @@
               <h5>Difficulty: {{difficulty}}</h5>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Close">Close</button>
+              <button type="button" class="btn btn-default closeBtn" data-dismiss="modal" aria-label="Close">Close</button>
             </div>
           </div>
         </div>
@@ -126,10 +124,10 @@
               <span aria-hidden="true">&times;</span>
               <span class="sr-only">Close</span>
             </button>
+            <h4>Update Trail</h4>
           </div>
           <div class="modal-body">
-            <form class="form-horizontal row-spacer col-md-12" id="updateForm">
-              <h4>Update Trail:</h4>
+            <form class="form-horizontal col-md-12" id="updateForm">
               <div class="form-group">
                 <label for="name">Name</label>
                 <input id="updatedTrailName" type="text" class="form-control" name="name" placeholder="Trail Name">
@@ -148,11 +146,11 @@
               </div>
               <div class="form-group">
                 <label for="link">Link to More Info</label>
-                <input id="updatedInfoLink" type="text" class="form-control" name="moreInfo" placeholder="http://www.presidio.gov/trails/batteries-to-bluffs-trail">
+                <input id="updatedInfoLink" type="text" class="form-control" name="link" placeholder="http://www.presidio.gov/trails/batteries-to-bluffs-trail">
               </div>
               <div class="form-group">
                 <label for="trailImage">Trail Image</label>
-                <input id="updatedImage" type="text" class="form-control" name="trailImage" placeholder="http://www.campbellgradinginc.com/sites/campbellgradinginc.com/files/upload/btb_overall_treve_pic.jpg">
+                <input id="updatedImage" type="text" class="form-control" name="image" placeholder="http://www.campbellgradinginc.com/sites/campbellgradinginc.com/files/upload/btb_overall_treve_pic.jpg">
               </div>
             </div> <!-- end of Update Modal body -->
             <div class="update-modal-footer modal-footer">
@@ -163,27 +161,27 @@
       </div> <!-- end of Update Modal dialog -->
     </div> <!-- end of Update Modal -->
 
-<!-- delete modal template --->
+<!-- delete modal --->
     <div id="delete-modal" class="delete-modal modal" data-backdrop="false" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close"
-               data-dismiss="modal">
-                   <span aria-hidden="true">&times;</span>
-                   <span class="sr-only">Close</span>
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Close</span>
             </button>
-      </div>
-      <div class="modal-body">
-        <p>Are you sure you want to delete this trail?</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-        <button type="button" id="confirmDelete" class="btn btn-primary">Confirm Delete</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
+            <h4>Delete Trail</h4>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to delete this trail?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default doNotDelete" data-dismiss="modal">No</button>
+            <button type="button" id="confirmDelete" class="btn btn-primary confirmDelete">Confirm Delete</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <footer class="page-footer"></footer>
   </body>
 </html>

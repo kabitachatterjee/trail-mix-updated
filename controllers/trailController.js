@@ -30,8 +30,9 @@ function update(req, res) {
 
     .then(function(err, trail){
       if (err) {
-        console.log("error updating trail", err)
+        console.log("error updating trail")
       }
+      console.log("trail updated successfully! UPDATED TRAIL: ", trail);
       res.json(trail);
     });
 }
