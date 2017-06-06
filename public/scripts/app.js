@@ -102,6 +102,14 @@ $(document).ready(function(){
     });
   } // close of indexAllTrails
 
+  $('.search').on('submit', function(e) {
+    e.preventDefault();
+    var search = $('.search input').val();
+    console.log(search);
+    searchTrailSuccess(search);
+  });
+
+
   function allTrailsError() {
     console.log("error: failed to load index of all trails");
   }
@@ -138,27 +146,42 @@ $(document).ready(function(){
     console.log("Error: hit updateTrailError function!")
   }
 
+//////////
   function deleteTrailSuccess(jsonData) {
     var trail = jsonData;
     var trailId = trail._id;
-    console.log("delete trail: ", trailId);
 
     allTrails.filter(function(t, i, arr) {
       if (t._id === trailId) {
         arr.splice(i, 1);
       }
       return arr;
-    })
-    console.log(allTrails);
-
+    });
 
     $("#trails").empty();
     indexAllTrails(allTrails);
     console.log("deleted successfully");
-  }
+  } // end of deleteTrailSuccess
 
   function deleteTrailError() {
     console.log("error on delete");
+  }
+
+  function searchTrailSuccess(search) {
+    console.log("yay");
+    console.log(search);
+    console.log(allTrails);
+    for(var index = 0; index < allTrails.length; index++) {
+      if(((allTrails[index].name).toLowerCase()) === (search.toLowerCase())) {
+        allTrails = [allTrails[index]];
+        break;
+      }
+    }
+    console.log(allTrails);
+
+    $("#trails").empty();
+    $(".add").hide();
+    indexAllTrails(allTrails);
   }
 
 }); //close of $(document).ready
