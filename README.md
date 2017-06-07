@@ -28,8 +28,8 @@
   - Social capabilities/sharing of trails, photos, comments, etc.
   - Advanced search capabilities (back-end search)
 
-  ## Screenshots:
-
+  Searching for a trail:
   ![screenshot #1](https://github.com/kabitachatterjee/trail-mix/blob/cleanUpBranch2/public/images/screenshot1.png?raw=true)
 
+  Adding a trail:
   ![screenshot #2](https://github.com/kabitachatterjee/trail-mix/blob/cleanUpBranch2/public/images/screenshot2.png?raw=true)
