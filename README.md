@@ -30,4 +30,4 @@
 
   ## Screenshots:
 
-  [screenshot1] (/public/images/screenshot1.png)
+  [screenshot1] (https://github.com/kabitachatterjee/trail-mix/blob/cleanUpBranch2/public/images/screenshot1.png?raw=true)
