@@ -31,3 +31,5 @@
   ## Screenshots:
 
   ![screenshot #1](https://github.com/kabitachatterjee/trail-mix/blob/cleanUpBranch2/public/images/screenshot1.png?raw=true)
+
+  ![screenshot #2](https://github.com/kabitachatterjee/trail-mix/blob/cleanUpBranch2/public/images/screenshot2.png?raw=true)
