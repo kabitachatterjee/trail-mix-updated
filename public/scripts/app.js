@@ -14,18 +14,6 @@ $(document).ready(function(){
     error: allTrailsError
   });
 
-<<<<<<< HEAD
-
-  $(".add").on("click", function openAddModal() {
-
-    // adding a modal each time it is clicked
-    // not good
-    $("#addModal").show();
-    $('#addForm').on('submit', function(e) {
-
-      e.preventDefault();
-      $.ajax({
-=======
 //add / create form event handler
   $('#addForm').on('submit', function(e) {
     var name = $('#name');
@@ -41,7 +29,6 @@ $(document).ready(function(){
         }
        e.preventDefault();
        $.ajax({
->>>>>>> master
         method: 'POST',
         url: '/api/trails/',
         data: $(this).serialize(),
