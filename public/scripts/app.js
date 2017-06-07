@@ -27,6 +27,8 @@ $(document).ready(function(){
           // Remove the errors highlight
           name.closest('.form-group').removeClass('has-error').addClass('has-success');
         }
+        name.closest('.form-group').removeClass('has-error');
+        name.closest('.form-group').removeClass('has-success');
        e.preventDefault();
        $.ajax({
         method: 'POST',
@@ -186,17 +188,16 @@ $(document).ready(function(){
 
   function searchTrailSuccess(search) {
     var unfilteredTrails = allTrails;
-
     allTrails = allTrails.filter(function(t,i) {
       var trail = t.name.toLowerCase();
       return trail.includes(search.toLowerCase());
     });
-
     $("#trails").empty();
     $(".add").hide();
     if (allTrails.length === 0) {
       $("#trails").append("<h3>Your search did not return any results.</h3>");
-    } else {
+    }
+    else {
       indexAllTrails(allTrails);
     }
     allTrails = unfilteredTrails;
