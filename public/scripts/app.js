@@ -190,8 +190,11 @@ $(document).ready(function(){
       return trail.includes(search.toLowerCase());
     });
 
+    if (search !== "") {
+      $(".add").hide();
+    }
     $("#trails").empty();
-    $(".add").hide();
+    
     if (allTrails.length === 0) {
       $("#trails").append("<h3>Your search did not return any results.</h3>");
     } else {
