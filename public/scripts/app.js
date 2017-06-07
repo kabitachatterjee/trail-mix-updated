@@ -14,6 +14,7 @@ $(document).ready(function(){
     error: allTrailsError
   });
 
+<<<<<<< HEAD
 
   $(".add").on("click", function openAddModal() {
 
@@ -24,18 +25,38 @@ $(document).ready(function(){
 
       e.preventDefault();
       $.ajax({
+=======
+//add / create form event handler
+  $('#addForm').on('submit', function(e) {
+    var name = $('#name');
+    // Check if there is an entered value
+        if(!name.val()) {
+          // Add errors highlight
+          name.closest('.form-group').removeClass('has-success').addClass('has-error');
+          return false; // Stop submission of the form
+        }
+        else {
+          // Remove the errors highlight
+          name.closest('.form-group').removeClass('has-error').addClass('has-success');
+        }
+       e.preventDefault();
+       $.ajax({
+>>>>>>> master
         method: 'POST',
         url: '/api/trails/',
         data: $(this).serialize(),
         success: addTrailSuccess,
         error: addTrailError
-      });
+       });
       $("#addModal").hide();
     });
-    $("button").on("click", function(e) {
-      $(".modal").hide();
-    });
-  });
+
+  $(".add").on("click", function openAddModal() {
+    $("#addModal").show();
+    $(".close").on("click", function(e) {
+       $(".modal").hide();
+     });
+   });
 
   // open update modal when update button is clicked
   $trailsList.on("click", ".update-btn", function openUpdateModal() {
@@ -89,7 +110,7 @@ $(document).ready(function(){
       var stampedTemplate = Mustache.render(rawTemplate, el);
       $("#trails").append(stampedTemplate);
     });
-    $("img").on("click", function openInfo() {
+    $(".card object").on("click", function openInfo() {
       var rawInfoTemplate = $("#info-modal-template").html();
       var infoId = $(this).attr("data-target");
       var currentInfo = jsonData.filter(function(obj) {
