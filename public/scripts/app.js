@@ -35,12 +35,14 @@ $(document).ready(function(){
         success: addTrailSuccess,
         error: addTrailError
        });
+      $("#addForm").trigger('reset');
       $("#addModal").hide();
     });
 
   $(".add").on("click", function openAddModal() {
     $("#addModal").show();
     $(".close").on("click", function(e) {
+      $("#addForm").trigger('reset');
        $(".modal").hide();
      });
    });
