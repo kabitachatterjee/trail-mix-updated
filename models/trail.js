@@ -12,7 +12,7 @@ var TrailSchema = new Schema({
   link: String,
   image: {
     type: String,
-    default: "http://goldenhillsrealestate.com/files/2010/11/Stevens-trail-sign-2.jpg"
+    default:"http://goldenhillsrealestate.com/files/2010/11/Stevens-trail-sign-2.jpg"
   },
   trailMap: String,
   created_at: {
