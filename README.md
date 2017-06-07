@@ -29,3 +29,5 @@
   - Advanced search capabilities (back-end search)
 
   ## Screenshots:
+
+  [screenshot1] (/public/images/screenshot1.png)
