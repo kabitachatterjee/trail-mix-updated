@@ -14,41 +14,36 @@ $(document).ready(function(){
     error: allTrailsError
   });
 
-
-  $(".add").on("click", function openAddModal() {
-    $("#addModal").show();
-    $('#addForm').on('submit', function(e) {
-
-      var name = $('#name');
-
+//add / create form event handler
+  $('#addForm').on('submit', function(e) {
+    var name = $('#name');
     // Check if there is an entered value
-    if(!name.val()) {
-      // Add errors highlight
-      name.closest('.form-group').removeClass('has-success').addClass('has-error');
-
-      // Stop submission of the form
-      e.preventDefault();
-    } else {
-      // Remove the errors highlight
-      name.closest('.form-group').removeClass('has-error').addClass('has-success');
-  //   }
-  // });
-
-      //e.preventDefault();
-      $.ajax({
+        if(!name.val()) {
+          // Add errors highlight
+          name.closest('.form-group').removeClass('has-success').addClass('has-error');
+          return false; // Stop submission of the form
+        }
+        else {
+          // Remove the errors highlight
+          name.closest('.form-group').removeClass('has-error').addClass('has-success');
+        }
+       e.preventDefault();
+       $.ajax({
         method: 'POST',
         url: '/api/trails/',
         data: $(this).serialize(),
         success: addTrailSuccess,
         error: addTrailError
-      });
-    }
+       });
       $("#addModal").hide();
     });
-    $("button").on("click", function(e) {
-      $(".modal").hide();
-    });
-  });
+
+  $(".add").on("click", function openAddModal() {
+    $("#addModal").show();
+    $(".close").on("click", function(e) {
+       $(".modal").hide();
+     });
+   });
 
   // open update modal when update button is clicked
   $trailsList.on("click", ".update-btn", function openUpdateModal() {
