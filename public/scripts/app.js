@@ -157,16 +157,12 @@ $(document).ready(function(){
     console.log("Error: hit updateTrailError function!")
   }
 
-
   function deleteTrailSuccess(jsonData) {
     var trail = jsonData;
     var trailId = trail._id;
 
-    allTrails.filter(function(t, i, arr) {
-      if (t._id === trailId) {
-        arr.splice(i, 1);
-      }
-      return arr;
+    allTrails = allTrails.filter(function(t) {
+      return (t._id !== trailId);
     });
 
     $("#trails").empty();
@@ -178,7 +174,6 @@ $(document).ready(function(){
     console.log("error on delete");
   }
 
-
   function searchTrailSuccess(search) {
     var unfilteredTrails = allTrails;
 
@@ -186,12 +181,15 @@ $(document).ready(function(){
       var trail = t.name.toLowerCase();
       return trail.includes(search.toLowerCase());
     });
-    console.log(allTrails);
 
     $("#trails").empty();
     $(".add").hide();
-    indexAllTrails(allTrails);
+    if (allTrails.length === 0) {
+      $("#trails").append("<h3>Your search did not return any results.</h3>");
+    } else {
+      indexAllTrails(allTrails);
+    }
     allTrails = unfilteredTrails;
-  }
+  };
 
 }); //close of $(document).ready
