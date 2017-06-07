@@ -59,6 +59,7 @@ $(document).ready(function(){
           success: updateTrailSuccess,
           error: updateTrailError
         });
+      $("#updateForm").trigger('reset');
       updateModal.hide();
     });
   });
