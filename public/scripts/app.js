@@ -77,7 +77,7 @@ $(document).ready(function(){
           success: deleteTrailSuccess,
           error: deleteTrailError
         });
-      deleteModal.modal("hide");
+      $("#delete-modal").modal("hide");
     });
   });
 
@@ -161,9 +161,13 @@ $(document).ready(function(){
     var trail = jsonData;
     var trailId = trail._id;
 
-    allTrails.filter(function(t, i) {
-      return (t._id !== trailId)
+    allTrails.filter(function(t, i, arr) {
+      if (t._id === trailId) {
+        arr.splice(i, 1);
+      }
+      return arr;
     });
+
     $("#trails").empty();
     indexAllTrails(allTrails);
     console.log("deleted successfully");
