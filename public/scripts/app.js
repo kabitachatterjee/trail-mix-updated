@@ -60,6 +60,7 @@ $(document).ready(function(){
     $(".close").on("click", function(e) {
       e.preventDefault();
       updateModal.hide();
+      $("#updateForm").trigger('reset');
     })
     $(".submit").on("click", function(e) {
       var updateData = $("#updateForm").serialize();
@@ -192,8 +193,8 @@ $(document).ready(function(){
       var trail = t.name.toLowerCase();
       return trail.includes(search.toLowerCase());
     });
+
     $("#trails").empty();
-    $(".add").hide();
     if (allTrails.length === 0) {
       $("#trails").append("<h3>Your search did not return any results.</h3>");
     }
