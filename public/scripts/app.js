@@ -14,6 +14,18 @@ $(document).ready(function(){
     error: allTrailsError
   });
 
+<<<<<<< HEAD
+
+  $(".add").on("click", function openAddModal() {
+
+    // adding a modal each time it is clicked
+    // not good
+    $("#addModal").show();
+    $('#addForm').on('submit', function(e) {
+
+      e.preventDefault();
+      $.ajax({
+=======
 //add / create form event handler
   $('#addForm').on('submit', function(e) {
     var name = $('#name');
@@ -29,6 +41,7 @@ $(document).ready(function(){
         }
        e.preventDefault();
        $.ajax({
+>>>>>>> master
         method: 'POST',
         url: '/api/trails/',
         data: $(this).serialize(),
@@ -67,6 +80,7 @@ $(document).ready(function(){
           success: updateTrailSuccess,
           error: updateTrailError
         });
+      $("#updateForm").trigger('reset');
       updateModal.hide();
     });
   });
@@ -85,7 +99,7 @@ $(document).ready(function(){
           success: deleteTrailSuccess,
           error: deleteTrailError
         });
-      deleteModal.hide();
+      $("#delete-modal").modal("hide");
     });
   });
 
@@ -113,6 +127,8 @@ $(document).ready(function(){
     });
   } // close of indexAllTrails
 
+
+//  SEARCH FUNCTION
   $('.search').on('submit', function(e) {
     e.preventDefault();
     var search = $('.search input').val();
@@ -136,15 +152,20 @@ $(document).ready(function(){
     console.log("create error");
   }
 
-  function updateTrailSuccess(jsonData) {
 
+  function updateTrailSuccess(jsonData) {
     var updatedTrail = jsonData;
+    console.log(jsonData);
     var updatedTrailId = updatedTrail._id;
 
     allTrails = allTrails.map(function(t, i) {
       if (t._id === updatedTrailId) {
         t.name = updatedTrail.name;
         t.distance = updatedTrail.distance;
+        t.difficulty = updatedTrail.difficulty;
+        t.image = updatedTrail.image;
+        t.trailMap = updatedTrail.trailMap;
+        t.link = updatedTrail.link;
       }
       return t;
     });
@@ -161,11 +182,8 @@ $(document).ready(function(){
     var trail = jsonData;
     var trailId = trail._id;
 
-    allTrails.filter(function(t, i, arr) {
-      if (t._id === trailId) {
-        arr.splice(i, 1);
-      }
-      return arr;
+    allTrails = allTrails.filter(function(t) {
+      return (t._id !== trailId);
     });
 
     $("#trails").empty();
@@ -178,17 +196,21 @@ $(document).ready(function(){
   }
 
   function searchTrailSuccess(search) {
+    var unfilteredTrails = allTrails;
 
     allTrails = allTrails.filter(function(t,i) {
       var trail = t.name.toLowerCase();
       return trail.includes(search.toLowerCase());
     });
 
-    console.log(allTrails);
-
     $("#trails").empty();
     $(".add").hide();
-    indexAllTrails(allTrails);
-  }
+    if (allTrails.length === 0) {
+      $("#trails").append("<h3>Your search did not return any results.</h3>");
+    } else {
+      indexAllTrails(allTrails);
+    }
+    allTrails = unfilteredTrails;
+  };
 
 }); //close of $(document).ready
