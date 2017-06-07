@@ -56,6 +56,7 @@ $(document).ready(function(){
     $(".close").on("click", function(e) {
       e.preventDefault();
       updateModal.hide();
+      $("#updateForm").trigger('reset');
     })
     $(".submit").on("click", function(e) {
       var updateData = $("#updateForm").serialize();
@@ -190,8 +191,10 @@ $(document).ready(function(){
       return trail.includes(search.toLowerCase());
     });
 
+    if (search !== "") {
+      $(".add").hide();
+    }
     $("#trails").empty();
-    $(".add").hide();
     if (allTrails.length === 0) {
       $("#trails").append("<h3>Your search did not return any results.</h3>");
     } else {
