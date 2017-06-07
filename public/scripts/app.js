@@ -27,6 +27,8 @@ $(document).ready(function(){
           // Remove the errors highlight
           name.closest('.form-group').removeClass('has-error').addClass('has-success');
         }
+        name.closest('.form-group').removeClass('has-error');
+        name.closest('.form-group').removeClass('has-success');
        e.preventDefault();
        $.ajax({
         method: 'POST',
@@ -35,12 +37,14 @@ $(document).ready(function(){
         success: addTrailSuccess,
         error: addTrailError
        });
+      $("#addForm").trigger('reset');
       $("#addModal").hide();
     });
 
   $(".add").on("click", function openAddModal() {
     $("#addModal").show();
     $(".close").on("click", function(e) {
+      $("#addForm").trigger('reset');
        $(".modal").hide();
      });
    });
@@ -185,19 +189,16 @@ $(document).ready(function(){
 
   function searchTrailSuccess(search) {
     var unfilteredTrails = allTrails;
-
     allTrails = allTrails.filter(function(t,i) {
       var trail = t.name.toLowerCase();
       return trail.includes(search.toLowerCase());
     });
 
-    if (search !== "") {
-      $(".add").hide();
-    }
     $("#trails").empty();
     if (allTrails.length === 0) {
       $("#trails").append("<h3>Your search did not return any results.</h3>");
-    } else {
+    }
+    else {
       indexAllTrails(allTrails);
     }
     allTrails = unfilteredTrails;
