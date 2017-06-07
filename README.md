@@ -21,7 +21,7 @@
   - Search through your trails by name
 
   ## Planned Features:
-  - Google Maps integration to show all trail-heads on a main maps
+  - Google Maps integration to show all trail-heads on a main map
   - Google Map integration for each info-modal to show the actual trail path for
     the selected trail
   - User Logins/Accounts
@@ -29,4 +29,3 @@
   - Advanced search capabilities (back-end search)
 
   ## Screenshots:
-  
