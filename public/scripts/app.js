@@ -16,6 +16,9 @@ $(document).ready(function(){
 
 
   $(".add").on("click", function openAddModal() {
+
+    // adding a modal each time it is clicked
+    // not good
     $("#addModal").show();
     $('#addForm').on('submit', function(e) {
 
@@ -74,7 +77,7 @@ $(document).ready(function(){
           success: deleteTrailSuccess,
           error: deleteTrailError
         });
-      deleteModal.hide();
+      deleteModal.modal("hide");
     });
   });
 
@@ -102,6 +105,8 @@ $(document).ready(function(){
     });
   } // close of indexAllTrails
 
+
+//  SEARCH FUNCTION
   $('.search').on('submit', function(e) {
     e.preventDefault();
     var search = $('.search input').val();
@@ -125,15 +130,20 @@ $(document).ready(function(){
     console.log("create error");
   }
 
-  function updateTrailSuccess(jsonData) {
 
+  function updateTrailSuccess(jsonData) {
     var updatedTrail = jsonData;
+    console.log(jsonData);
     var updatedTrailId = updatedTrail._id;
 
     allTrails = allTrails.map(function(t, i) {
       if (t._id === updatedTrailId) {
         t.name = updatedTrail.name;
         t.distance = updatedTrail.distance;
+        t.difficulty = updatedTrail.difficulty;
+        t.image = updatedTrail.image;
+        t.trailMap = updatedTrail.trailMap;
+        t.link = updatedTrail.link;
       }
       return t;
     });
@@ -146,15 +156,13 @@ $(document).ready(function(){
     console.log("Error: hit updateTrailError function!")
   }
 
+
   function deleteTrailSuccess(jsonData) {
     var trail = jsonData;
     var trailId = trail._id;
 
-    allTrails.filter(function(t, i, arr) {
-      if (t._id === trailId) {
-        arr.splice(i, 1);
-      }
-      return arr;
+    allTrails.filter(function(t, i) {
+      return (t._id !== trailId)
     });
     $("#trails").empty();
     indexAllTrails(allTrails);
@@ -165,6 +173,7 @@ $(document).ready(function(){
     console.log("error on delete");
   }
 
+
   function searchTrailSuccess(search) {
     var unfilteredTrails = allTrails;
 
@@ -172,7 +181,6 @@ $(document).ready(function(){
       var trail = t.name.toLowerCase();
       return trail.includes(search.toLowerCase());
     });
-
     console.log(allTrails);
 
     $("#trails").empty();
