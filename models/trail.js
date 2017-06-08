@@ -12,7 +12,7 @@ var TrailSchema = new Schema({
   link: String,
   image: {
     type: String,
-    default:"http://www.mommyhoodcentral.com/wp-content/uploads/2016/09/hiking-trails.jpg"
+    default:"http://goldenhillsrealestate.com/files/2010/11/Stevens-trail-sign-2.jpg"
   },
   trailMap: String,
   created_at: {

@@ -23,7 +23,6 @@ function index(req, res) {
 
 //   PUT/UPDATE:
 function update(req, res) {
-
   var trail = Trail.findById(req.params.id, function(err, trail) {
     if (err) {
       console.log('error, trail not found');
