@@ -1,5 +1,7 @@
 var db = require("../models");
 var Trail = db.Trail;
+var config = require('../config.js');
+var admin = require('../config/administrators.json');
 
 // GET /api/trails
 function index(req, res) {
@@ -62,6 +64,24 @@ function destroy(req, res) {
     if (err) {
       console.log("delete errror");
     }
+    var accountSid = config.accountSid;
+    var authToken = config.authToken;
+    var sendingNumber = config.sendingNumber;
+
+    //require the Twilio module and create a REST client
+    var client = require('twilio')(accountSid, authToken);
+    console.log(accountSid);
+    console.log(authToken);
+    console.log(sendingNumber);
+    console.log(admin[0].phoneNumber);
+
+    client.messages.create({
+        to: admin[0].phoneNumber,
+        from: sendingNumber,
+        body: "A trail with id:"+ trailID +" got deleted",
+    }, function(err, message) {
+        console.log(message.sid);
+    });
     console.log("deleted trail successfully");
     res.json(trail);
   })

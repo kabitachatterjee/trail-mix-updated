@@ -18,7 +18,10 @@
   "homepage": "https://github.com/kabitachatterjee/trail-mix#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "dotenv": "^4.0.0",
     "express": "^4.15.3",
-    "mongoose": "^4.10.4"
+    "jsonfile": "^3.0.0",
+    "mongoose": "^4.10.4",
+    "twilio": "^3.3.0"
   }
 }
