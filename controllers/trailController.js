@@ -70,10 +70,6 @@ function destroy(req, res) {
 
     //require the Twilio module and create a REST client
     var client = require('twilio')(accountSid, authToken);
-    console.log(accountSid);
-    console.log(authToken);
-    console.log(sendingNumber);
-    console.log(admin[0].phoneNumber);
 
     client.messages.create({
         to: admin[0].phoneNumber,
