@@ -1,55 +1,197 @@
-<!-- views/profile.ejs -->
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-	<title>Node Authentication</title>
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-	<style>
-		body 		{ padding-top:80px; word-wrap:break-word; }
-	</style>
-</head>
-<body>
-<div class="container">
+  <head>
+    <meta charset="utf-8">
+    <title>Trail Mix</title>
 
-	<div class="page-header text-center">
-		<h1><span class="fa fa-anchor"></span> Profile Page</h1>
-		<a href="/logout" class="btn btn-default btn-sm">Logout</a>
-	</div>
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/styles.css">
 
-	<div class="row">
+    <!-- VENDOR SCRIPTS -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.2/mustache.min.js"></script>
 
-		<!-- LOCAL INFORMATION -->
-		<div class="col-sm-6">
-			<div class="well">
-				<h3><span class="fa fa-user"></span> Local</h3>
+    <!-- APPLICATION SCRIPTS -->
+    <script src="/scripts/app.js"></script>
+  </head>
 
-					<p>
-						<strong>id</strong>: <%= user._id %><br>
-						<strong>email</strong>: <%= user.local.username %><br>
-						<strong>password</strong>: <%= user.local.password %>
-					</p>
 
-			</div>
-		</div>
+  <body>
+    <div class="jumbotron navbar-fixed-top">
+      <img class="logo" alt="logo" src="./images/Artboard1.png">
 
-		 <!-- FACEBOOK INFORMATION -->
-        <div class="col-sm-6">
-            <div class="well">
-                <h3 class="text-primary"><span class="fa fa-facebook"></span> Facebook</h3>
+      <form class="search form-inline pull-right">
+        <input type="text" name="name" placeholder="Trail name">
+        <button type="submit" class="btn btn-default searchBtn">Search</button>
+      </form>
+      <a href="/logout" class="btn btn-default btn-sm pull-right">Logout</a>
+    </div> <!--close class="jumbotron"-->
+    <div class="container">
+      <div class="row-spacer" id="trails"></div> <!-- target to which index of trails will be appended-->
+      <div class="col-md-4 add">
+        <img class="img-responsive" src="./images/plus-icon.png">
+      </div>
+      <div id="modal-target"></div>
+      <div id="update-modal-target"></div>
+      <div id="delete-modal-target"></div>
+    </div> <!-- end of container div -->
 
-                <p>
-                    <strong>id</strong>: <%= user.facebook.id %><br>
-                    <strong>token</strong>: <%= user.facebook.token %><br>
-                    <strong>email</strong>: <%= user.facebook.email %><br>
-                    <strong>name</strong>: <%= user.facebook.name %>
-                </p>
-
-            </div>
+    <!-- The create Modal -->
+    <div id="addModal" class="modal" role="dialog" aria-hidden="true" tabindex="-1" data-backdrop="false">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+               <span aria-hidden="true">&times;</span>
+               <span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title">Add your new trail</h4>
+          </div>
+      <!-- Add Modal content -->
+      <div class="modal-body">
+    <form class="form-horizontal col-md-12" id="addForm">
+        <div class="form-group">
+          <label for="name" class="col-sm-2 control-label">Name</label>
+          <input type="text" class="form-control col-sm-10 required" id="name" name="name" placeholder="Trail name">
         </div>
+        <div class="form-group">
+          <label for="distance" class="col-sm-2 control-label">Distance in miles</label>
+          <input type="text" class="form-control col-sm-10 required" name="distance" placeholder="distance in miles">
+        </div>
+        <div class="form-group">
+          <label for="difficulty" class="col-sm-2 control-label">Difficulty</label>
+          <input type="number" class="form-control col-sm-10 required" name="difficulty" placeholder="difficulty on a scale of 1 to 5">
+        </div>
+        <div class="form-group">
+          <label for="image" class="col-sm-2 control-label">Image</label>
+          <input type="text" class="form-control col-sm-10" name="image" placeholder="trail.jpg">
+        </div>
+        <div class="form-group">
+          <label for="link" class="col-sm-2 control-label">Link to website</label>
+          <input type="text" class="form-control col-sm-10" name="link" placeholder="external website link">
+        </div>
+        <div class="form-group">
+          <label for="trailMap" class="col-sm-2 control-label">Trail Map</label>
+          <input type="text" class="form-control col-sm-10" name="trailMap" placeholder="trail map.jpg">
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-default pull-right addNewBtn">Add New Trail</button>
+        </div>
+      </div>
+     </form>
+    </div>
+    <div class="modal-footer"></div>
+    </div>
+  </div>
+</div> <!-- End of create trail modal -->
 
-	</div>
+    <!-- Trail Cards Template -->
+    <script id="trails-template" type="x-tmpl-mustache">
+      <div class="col-md-4 card row-spacer">
+      <object data="{{image}}" data-toggle="modal" data-target="{{_id}}">
+        <img src="http://www.mommyhoodcentral.com/wp-content/uploads/2016/09/hiking-trails.jpg" alt="{{name}}" class="img-responsive">
+        </object>
+        <h4>{{name}}</h4><button type="button" class="btn btn-secondary btn-sm update-btn" data-toggle="modal" data-id="{{_id}}" data-target="#update-modal-template">Update Trail</button>
+        <button type="button" class="btn btn-secondary btn-sm delete-btn" data-toggle="modal" data-id="{{_id}}" data-target="#delete-modal">Delete Trail</button>
+      </div>
+    </script> <!-- end of Trail Cards Template -->
 
-</div>
-</body>
+    <!-- Info Modal Template -->
+    <script id="info-modal-template" type="x-tmpl-mustache">
+      <div class="modal info-modal" id="{{_id}}" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">
+                  <span aria-hidden="true">&times;</span>
+                  <span class="sr-only">Close</span>
+              </button>
+              <h4 class="modal-title">{{name}}</h4>
+            </div>
+            <div class="modal-body">
+              <img class="img-responsive" src="{{trailMap}}" alt="trail map image">
+              <h5>More Information:</h5><a href="{{link}}" target="_blank">{{link}}</a>
+              <h5>Distance: {{distance}}</h5>
+              <h5>Difficulty: {{difficulty}}</h5>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default closeBtn" data-dismiss="modal" aria-label="Close">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </script> <!-- end of Info Modal Template -->
+
+    <!-- Update Modal Template -->
+    <div id="update-modal" class="update-modal modal" data-backdrop="false" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content updateContent">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Close</span>
+            </button>
+            <h4>Update Trail</h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal col-md-12" id="updateForm">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input id="updatedTrailName" type="text" class="form-control" name="name" placeholder="Trail name">
+              </div>
+              <div class="form-group">
+                <label for="distance">Distance in Miles</label>
+                <input id="updatedDistance" type="text" class="form-control" name="distance" placeholder="distance in miles">
+              </div>
+              <div class="form-group">
+                <label for="difficulty">Difficulty</label>
+                <input id="updatedDifficulty" type="text" class="form-control" name="difficulty" placeholder="difficulty on a scale of 1 to 5">
+              </div>
+              <div class="form-group">
+                <label for="trailImage">Trail Image</label>
+                <input id="updatedImage" type="text" class="form-control" name="image" placeholder="http://www.lifefoc.com/photos/server3/golden_gate_park_0.jpg">
+              </div>
+              <div class="form-group">
+                <label for="link">Link to Website</label>
+                <input id="updatedInfoLink" type="text" class="form-control" name="link" placeholder="http://www.presidio.gov/trails/batteries-to-bluffs-trail">
+              </div>
+              <div class="form-group">
+                <label for="trailMap">Trail Map</label>
+                <input id="updatedTrailMap" type="text" class="form-control" name="trailMap" placeholder="http://www.mappery.com/maps/Presidio-Trail-and-Overlook-Map.png">
+              </div>
+            </div> <!-- end of Update Modal body -->
+            <div class="update-modal-footer modal-footer">
+              <button type="submit" class="submit btn btn-default pull-right">Save Updates</button>
+            </div>
+          </form>
+        </div> <!-- end of Update Modal content -->
+      </div> <!-- end of Update Modal dialog -->
+    </div> <!-- end of Update Modal -->
+
+<!-- delete modal --->
+    <div id="delete-modal" class="delete-modal modal" data-backdrop="false" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Close</span>
+            </button>
+            <h4>Delete Trail</h4>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to delete this trail?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default doNotDelete" data-dismiss="modal">No</button>
+            <button type="button" id="confirmDelete" class="btn btn-primary confirmDelete">Confirm Delete</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <footer class="page-footer"></footer>
+  </body>
 </html>

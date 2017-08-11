@@ -31,6 +31,8 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 
 app.set('view engine', 'ejs');
+require('./config/passport')(passport);
+require('./routes.js')(app, passport);
 
 
 var controllers = require('./controllers');
