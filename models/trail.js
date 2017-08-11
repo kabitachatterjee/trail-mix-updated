@@ -15,6 +15,10 @@ var TrailSchema = new Schema({
     default:"http://goldenhillsrealestate.com/files/2010/11/Stevens-trail-sign-2.jpg"
   },
   trailMap: String,
+  user: [{
+          type: Schema.Types.ObjectId,
+           ref: 'User'
+        }],
   created_at: {
     type: Date,
     default: Date.now
