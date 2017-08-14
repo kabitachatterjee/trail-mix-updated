@@ -193,4 +193,7 @@ label {
     opacity: 1.0;
     filter: alpha(opacity=100);
   }
+  .row-spacer {
+    margin-top: 150px;
+  }
 }
