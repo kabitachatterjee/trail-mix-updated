@@ -5,23 +5,63 @@
 	<title>Node Authentication</title>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
-	<style>
-		body 		{ padding-top:80px; }
-	</style>
+	<link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body>
-<div class="container">
+  <div class="main-container">
+    <div class="main">
+      <nav class="navbar fixed-top navbar-light bg-faded">
+        <a class="navbar-brand" href="#"><img class="logo" alt="logo" src="./images/Artboard1.png"></a>
+    <!-- <a class="navbar-brand" href="#">Trail-Mix</a> -->
+  </nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-6">
+      <h4 class="narrative">The woods are lovely dark and deep. But I have promises to keep, and miles to go before I sleep.<br/> ~ Robert Frost</h4>
+      <h5 class="narrative">If you love hiking and feel like the outdoors are calling you, what are you waiting for.....Log off and wander into the woods. Save your favorite hikes in the Bay Area using your personal dashboard on TrailMix</h5>
+    </div>
+
+      <div class="col-xs-12 col-md-6">
+        <div class="col-sm-6 col-sm-offset-3 login">
+
+        	<h1><span class="fa fa-sign-in"></span> Signup</h1>
+
+
+        	<form action="/signup" method="post">
+        		<div class="form-group">
+        			<label>Email</label>
+        			<input type="text" class="form-control" name="email">
+        		</div>
+        		<div class="form-group">
+        			<label>Password</label>
+        			<input type="password" class="form-control" name="password">
+        		</div>
+
+        		<button type="submit" class="btn btn-warning btn-lg">Signup</button>
+        	</form>
+
+        	<hr>
+
+        	<p>Already have an account? <a href="/">Login</a></p>
+
+
+        </div>
+
+
+      </div>
+    </div>
+
+    </div>
+
+  </div>
+  </div>
+<!-- <div class="container">
 
 <div class="col-sm-6 col-sm-offset-3">
 
 	<h1><span class="fa fa-sign-in"></span> Signup</h1>
 
-	<!-- show any messages that come back with authentication -->
-	<% if (message.length > 0) { %>
-		<div class="alert alert-danger"><%= message %></div>
-	<% } %>
 
-	<!-- LOGIN FORM -->
 	<form action="/signup" method="post">
 		<div class="form-group">
 			<label>Email</label>
@@ -42,6 +82,6 @@
 
 </div>
 
-</div>
+</div> -->
 </body>
 </html>

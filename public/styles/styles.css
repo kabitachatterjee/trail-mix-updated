@@ -1,5 +1,27 @@
 body {
   background-color: grey;
+  color: whitesmoke;
+}
+.main {
+  height: 100vh;
+  background: url("../images/trail.jpg") center center fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+nav {
+  background-color: rgba(0,0,0,0.4);
+}
+.login {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: rgba(0,0,0,0.7);
+  padding: 5%;
+}
+.narrative {
+  font-size: 1.6em;
+  line-height: 1.6em;
+  text-align: center;
 }
 
 .jumbotron {
@@ -10,8 +32,8 @@ body {
 }
 
 .logo {
-  margin-left: 70px;
-  width: 500px;
+  margin-left: -28px;
+  width: 300px;
 }
 
 .row-spacer {
