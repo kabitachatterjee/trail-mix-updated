@@ -12,6 +12,14 @@ body {
 nav {
   background-color: rgba(0,0,0,0.4);
 }
+.navbar-inverse {
+  background-color: rgba(0,0,0,0.4);
+  height: 100px;
+  border-bottom: none;
+}
+.navbar-nav li a {
+  padding-top: 50px;
+}
 .login {
   background-size: cover;
   background-repeat: no-repeat;
@@ -37,7 +45,7 @@ nav {
 }
 
 .row-spacer {
-  margin-top: 200px;
+  margin-top: 100px;
 }
 
 .card object,.card img {
@@ -123,6 +131,9 @@ nav {
 .modal-body .form-horizontal .col-sm-offset-2 {
     margin-left: 15px;
 }
+.btn-lg {
+  background-color: #0b5c94;
+}
 
 .update-btn {
   background-color: #0b5c94;
@@ -165,7 +176,7 @@ label {
 
 .search {
   margin-right: 15px;
-  margin-top: 80px;
+  margin-top: 50px;
 }
 
 .searchBtn {

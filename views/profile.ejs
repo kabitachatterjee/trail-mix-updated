@@ -19,7 +19,7 @@
 
 
   <body>
-    <div class="jumbotron navbar-fixed-top">
+    <!-- <div class="jumbotron navbar-fixed-top">
       <img class="logo" alt="logo" src="./images/Artboard1.png">
 
       <form class="search form-inline pull-right">
@@ -27,7 +27,39 @@
         <button type="submit" class="btn btn-default searchBtn">Search</button>
       </form>
       <a href="/logout" class="btn btn-default btn-sm pull-right">Logout</a>
-    </div> <!--close class="jumbotron"-->
+    </div> -->
+    <!-- <nav class="navbar fixed-top navbar-light bg-faded">
+      <a class="navbar-brand" href="#"><img class="logo" alt="logo" src="./images/Artboard1.png"></a>
+  <form class="search form-inline pull-right">
+    <input type="text" name="name" placeholder="Trail name">
+    <button type="submit" class="btn btn-default searchBtn">Search</button>
+  </form>
+  <a href="/logout" class="btn btn-default btn-sm pull-right">Logout</a>
+</nav> -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#"><img class="logo" alt="logo" src="./images/Artboard1.png"></a>
+              </div>
+            <div id="navbar" class="collapse navbar-collapse">
+              <ul class="nav navbar-nav">
+                <li><form class="search form-inline">
+                  <input type="text" name="name" placeholder="Trail name">
+                  <button type="submit" class="btn btn-default searchBtn">Search</button>
+                </form></li>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="/logout">Logout</a></li>
+
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
+        </nav>
+
     <div class="container">
       <div class="row-spacer" id="trails"></div> <!-- target to which index of trails will be appended-->
       <div class="col-md-4 add">
