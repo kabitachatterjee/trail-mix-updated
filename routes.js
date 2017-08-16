@@ -1,15 +1,15 @@
 var User = require('./models/user');
 module.exports = function(app, passport){
 	app.get('/', function(req, res){
-		res.render('index.ejs');
+		res.render('index.ejs', { message: req.flash('loginMessage') });
 	});
 
-	app.get('/login', function(req, res){
-		res.render('login.ejs', { message: req.flash('loginMessage') });
-	});
+	// app.get('/login', function(req, res){
+	// 	res.render('login.ejs', { message: req.flash('loginMessage') });
+	// });
 	app.post('/login', passport.authenticate('local-login', {
 		successRedirect: '/profile',
-		failureRedirect: '/login',
+		failureRedirect: '/',
 		failureFlash: true
 	}));
 
@@ -46,5 +46,5 @@ function isLoggedIn(req, res, next) {
 		return next();
 	}
 
-	res.redirect('/login');
+	res.redirect('/');
 }

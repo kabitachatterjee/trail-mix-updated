@@ -196,4 +196,14 @@ label {
   .row-spacer {
     margin-top: 150px;
   }
+  .navbar-nav li a {
+    padding-top: 45px;
+  }
+  .search {
+    margin-right: 15px;
+    margin-top: 45px;
+  }
+  .logo {
+    margin-left: -128px;
+  }
 }
