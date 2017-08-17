@@ -4,6 +4,9 @@ var allTrails = [];
 
 
 $(document).ready(function(){
+//   $(document).on('click',function(){
+//     $('.collapse').collapse('hide');
+//   });
 
   $trailsList = $("#trails");
 
