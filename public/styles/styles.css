@@ -1,5 +1,39 @@
 body {
   background-color: grey;
+  color: whitesmoke;
+  font-family: 'Roboto', sans-serif;
+}
+.main {
+  height: 100vh;
+  background: url("../images/trail.jpg") center center fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+nav {
+  background-color: rgba(0,0,0,0.4);
+}
+.navbar-inverse {
+  /*background-color: rgba(0,0,0,0.4);*/
+  height: 100px;
+  border-bottom: none;
+}
+.navbar-nav li a {
+  padding-top: 50px;
+}
+.login {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: rgba(0,0,0,0.7);
+  padding: 5%;
+}
+.narrative {
+  font-size: 1.6em;
+  line-height: 1.6em;
+  text-align: center;
+  color: white;
+  background-color: rgba(0,0,0,0.7);
+  padding: 5%;
 }
 
 .jumbotron {
@@ -10,12 +44,12 @@ body {
 }
 
 .logo {
-  margin-left: 70px;
-  width: 500px;
+  margin-left: -28px;
+  width: 300px;
 }
 
 .row-spacer {
-  margin-top: 200px;
+  margin-top: 100px;
 }
 
 .card object,.card img {
@@ -101,6 +135,9 @@ body {
 .modal-body .form-horizontal .col-sm-offset-2 {
     margin-left: 15px;
 }
+.btn-lg {
+  background-color: #0b5c94;
+}
 
 .update-btn {
   background-color: #0b5c94;
@@ -143,7 +180,7 @@ label {
 
 .search {
   margin-right: 15px;
-  margin-top: 80px;
+  margin-top: 50px;
 }
 
 .searchBtn {
@@ -159,5 +196,20 @@ label {
     box-shadow: 6px 6px 10px rgba(0,0,0,.5);
     opacity: 1.0;
     filter: alpha(opacity=100);
+  }
+  .row-spacer {
+    margin-top: 150px;
+  }
+  .navbar-nav li a {
+    padding-top: 15px;
+    margin-right: -20px;
+    font-size: 15px;
+  }
+  .search {
+    margin-left: 300px;
+    margin-top: 15px;
+  }
+  .login {
+    margin-top: 50px;
   }
 }

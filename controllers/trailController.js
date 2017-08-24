@@ -5,6 +5,9 @@ var Trail = db.Trail;
 function index(req, res) {
   // send back all our trails as JSON objects
   Trail.find({}, function(err, allTrails) {
+    allTrails = allTrails.filter(function(el){
+                    return String(el.user[0]) === String(req.user['_id'])
+                    });
     res.json(allTrails);
   });
 }
@@ -43,6 +46,9 @@ function update(req, res) {
 };
 
 function create(req, res) {
+  console.log(req.user);
+  req.body.user = req.user;
+  console.log(req.body);
   var newTrail = new Trail(req.body);
   newTrail.save(function(err,trail){
     if(err){
